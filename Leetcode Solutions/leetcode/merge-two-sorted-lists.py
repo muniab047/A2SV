@@ -6,33 +6,47 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
        
-        if not list1 and not list2:
-            return None
-        if not list1:
-            return list2
-        if not list2:
-            return list1
-
-        if list1.val<=list2.val:
-            head=list1
-            temp2=list2
-        else:
-            head=list2
-            temp2=list1
-        temp=head
-        while temp and temp2 :
-            if temp.next and temp2 and temp.next.val<temp2.val :
-                temp=temp.next
+        if not list1 or not list2:
+            if not list1:
+                return list2
             else:
-                curr=temp2
-                temp2=temp2.next
-                curr.next=temp.next
-                temp.next=curr
-                temp=temp.next
-       
+                return list1
+        
+
+        new_head = None
+        temp = new_head
+        while list1 and list2 :
+            if list1.val < list2.val:
+                if not new_head:
+                    new_head = list1
+                    list1 = list1.next
+                    new_head.next = None
+                    temp = new_head
+                else:
+                    temp1 = list1
+                    list1 = list1.next
+                    temp1.next = None
+                    temp.next = temp1
+                    temp = temp.next
+            else:
+                if not new_head:
+                    new_head = list2
+                    list2 = list2.next
+                    new_head.next = None
+                    temp = new_head
+                else:
+                    temp1 = list2
+                    list2 = list2.next
+                    temp1.next = None
+                    temp.next = temp1
+                    temp = temp.next
 
         
-        return head
+        if list1:
+            temp.next = list1
+        else:
+            temp.next = list2
+        return new_head
 
 
             
