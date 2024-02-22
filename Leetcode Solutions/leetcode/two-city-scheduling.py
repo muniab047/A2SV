@@ -22,10 +22,6 @@ class Solution:
         bdiff.sort()
         n=abs(acounter-((acounter+bcounter)//2))
 
-        print(acounter,bcounter,n)
-        \
-        print(summ)
-        
         for i in range(n):
             if acounter>bcounter:
             
@@ -36,14 +32,5 @@ class Solution:
 
         return summ
 
-        
-
-
-
-
-
-
-        
-        return summ
 
         
