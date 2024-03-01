@@ -9,7 +9,7 @@ class Solution:
             if sum(arr)==n and len(arr)==k:
                 ans.append(arr[:])
                 return
-            if sum(arr)>n:
+            if sum(arr)>n or len(arr)>k:
                 return
 
             for i in range(idx,10):
